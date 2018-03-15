@@ -2,18 +2,13 @@
   <div class="background">
     <div class="containerHeroes">
       <div class="firstDetail">
-        <div>
-          <h2>
-            {{character.name}}
-          </h2>
-        </div>
-
-        <div>
-          <img :src="character.thumbnail.path + '.' + character.thumbnail.extension" alt="">
-        </div>
+        <h2>
+          {{character.name}}
+        </h2>
+        <div class="images" :style="{ backgroundImage: 'url(' + character.thumbnail.path + '.' + character.thumbnail.extension + ')' }">
+        </div> 
       </div>
       
-    
       <div v-if="showDetail">
         <p>{{character.description}}, {{character.comics.available}}
         </p>
@@ -23,7 +18,6 @@
       </div>
       <button @click="showDetail=true" type="button">show</button>
     </div>
-   
   </div>
 </template>
 
@@ -50,18 +44,32 @@ export default {
 <style scoped>
 
 .background {
-  background-color: rgb(61, 172, 144);
+  background-color: rgb(25, 26, 37);
   color: white;
+  width: 20%;
+  padding: 0 30px;
 }
 
-.containerHeroes {
-  display: flex;
-  flex-direction: row;
+.images {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .firstDetail {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  text-align: center;
+}
+
+.containerHeroes {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background-color: yellow;
 }
 
 </style>
